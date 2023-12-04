@@ -2,16 +2,22 @@
   <div class="main-container">
     <my-comment :comments="comments"></my-comment>
     <!-- <comment-list :comments="comments"></comment-list> -->
+    <my-input
+      :current-user="currentUser"
+      @newComment="createComment"
+    ></my-input>
   </div>
 </template>
 
 <script>
 import MyComment from "./components/MyComment";
 import CommentList from "./components/CommentList.vue";
+import MyInput from "./components/MyInput.vue";
 export default {
   components: {
     MyComment,
     CommentList,
+    MyInput,
   },
   data() {
     return {
@@ -94,7 +100,19 @@ export default {
           ],
         },
       ],
+      currentUser: {
+        image: {
+          png: "./images/avatars/image-juliusomo.png",
+          webp: "./images/avatars/image-juliusomo.webp",
+        },
+        username: "juliusomo",
+      },
     };
+  },
+  methods: {
+    createComment(comment) {
+      this.comments.push(comment);
+    },
   },
 };
 </script>
@@ -105,15 +123,16 @@ export default {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Rubik", sans-serif;
 }
 body {
   background-color: hsl(228, 33%, 97%);
-  font-family: "Rubik", sans-serif;
+
   padding: 50px;
 }
 .main-container {
   margin: 0 auto;
-  max-width: 600px;
+  max-width: 700px;
   display: flex;
   flex-direction: column;
 }

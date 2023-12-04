@@ -186,9 +186,16 @@ export default {
   margin-right: 10px;
 }
 
+.comment {
+  width: 100%;
+  word-break: break-all;
+}
+
 .text {
   font-size: 1rem;
   color: hsl(211, 10%, 45%);
+  max-width: 700px;
+  white-space: pre-line;
 }
 .name {
   margin-right: 10px;
